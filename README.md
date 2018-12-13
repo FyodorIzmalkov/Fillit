@@ -1,2 +1,2 @@
 # Fillit
-This is the story of a piece of Tetris, one little square and a dev walk into a bar...
+program will take a file as parameter, which contains a list of Tetriminos, and arrange them in order to create the smallest square possible. Main goal is to find the smallest square in the minimal amount of time, despite an exponentially growing number of possibilities each time a piece is added.

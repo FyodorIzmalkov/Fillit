@@ -6,7 +6,7 @@
 #    By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 19:00:27 by lsandor-          #+#    #+#              #
-#    Updated: 2018/12/13 19:35:26 by lsandor-         ###   ########.fr        #
+#    Updated: 2018/12/14 21:32:04 by lsandor-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fillit
 SRC_D = $(addprefix ./srcs/, $(SRCS))
 OBJ_D = objs
 
-GCCFLAGS = -Wall -Wextra -Werror
+GCCFLAGS = -Wall -Wextra -Werror -g
 SRCS = *.c
 
 OBJS = $(addprefix $(OBJ_D)/,$(SRCS:.c=.o))

@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   assistance.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 19:38:24 by lsandor-          #+#    #+#             */
-/*   Updated: 2018/12/15 16:42:01 by lsandor-         ###   ########.fr       */
+/*   Created: 2018/12/15 19:20:35 by lsandor-          #+#    #+#             */
+/*   Updated: 2018/12/15 19:41:14 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	main(int argc, char **argv)
+void	ft_free(char ***str, int q)
 {
+	int i;
 
-	if (argc != 2)
+	i = -1;
+	while (++i < q)
 	{
-		ft_putstr("usage: ./fillit file_name\n");
-		return (1);
+		free(str[0][i]);
+		str[0][i] = NULL;
 	}
-	ft_read_file(argv[1]);
-	return (0);
+	free(str[0]);
+	str[0] = NULL;
 }
 
-void	ft_error(void)
+short	ft_get_size(int q)
 {
-	ft_putendl("error");
-	exit(1);
+	short res;
+
+	res = 1;
+	while ((int)(res * res) < q)
+		res++;
+	return (res);
 }

@@ -6,12 +6,11 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 16:34:31 by lsandor-          #+#    #+#             */
-/*   Updated: 2018/12/15 20:36:47 by lsandor-         ###   ########.fr       */
+/*   Updated: 2018/12/17 16:59:01 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
 
 void	ft_get_params(t_tetr *tetr)
 {
@@ -41,12 +40,11 @@ void	ft_get_params(t_tetr *tetr)
 	}
 }
 
-
 t_tetr	ft_get_coords(char *str, short i)
 {
-	t_tetr tetr;
-	short j;
-	short k;
+	t_tetr	tetr;
+	short	j;
+	short	k;
 
 	j = -1;
 	k = 0;
@@ -64,7 +62,7 @@ t_tetr	ft_get_coords(char *str, short i)
 	return (tetr);
 }
 
-int	ft_is_safe(t_tetr tetr, t_map mapa, short j, short k)
+int		ft_is_safe(t_tetr tetr, t_map mapa, short j, short k)
 {
 	short i;
 
@@ -77,7 +75,7 @@ int	ft_is_safe(t_tetr tetr, t_map mapa, short j, short k)
 	return (0);
 }
 
-int		ft_solve_map(t_tetr tetr[], t_map mapa, int q, short i)
+int		ft_solve_map(t_tetr tetr[], t_map mapa, short q, short i)
 {
 	short j;
 	short k;
@@ -94,14 +92,18 @@ int		ft_solve_map(t_tetr tetr[], t_map mapa, int q, short i)
 				if (i == q - 1 || ft_solve_map(tetr, mapa, q, i + 1))
 					return (1);
 				else
-
+					ft_back_track(tetr[i], mapa, j, k);
 			}
+		}
+	}
+	return (0);
+}
 
-void	ft_fill_struct(char **arr, int q)
+void	ft_fill_struct(char **arr, short q)
 {
-	t_tetr tetr[q];
-	short i;
-	t_map mapa;
+	t_tetr	tetr[q];
+	short	i;
+	t_map	mapa;
 
 	i = -1;
 	while (++i < q)
@@ -112,5 +114,9 @@ void	ft_fill_struct(char **arr, int q)
 	i = 0;
 	while (!ft_solve_map(tetr, mapa, q, i))
 	{
-
+		ft_free(&mapa.map, mapa.size);
+		mapa.size++;
+		mapa.map = ft_make_map(mapa.size);
+	}
+	ft_print_map(mapa);
 }

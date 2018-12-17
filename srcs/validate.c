@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 19:32:37 by lsandor-          #+#    #+#             */
-/*   Updated: 2018/12/15 19:08:48 by lsandor-         ###   ########.fr       */
+/*   Updated: 2018/12/17 16:57:36 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_read_file(char *file)
 	int		fd;
 	char	buf[MAX_BUFF];
 	int		len;
-	int		quantity;
+	short	quantity;
 
 	if ((fd = open(file, O_RDONLY)) < 0)
 		ft_error();
@@ -31,12 +31,12 @@ int		ft_read_file(char *file)
 	return (1);
 }
 
-void	ft_make_arr(char *buf, int q)
+void	ft_make_arr(char *buf, short q)
 {
-	int				i;
-	char			*temp;
-	char			**arr;
-	unsigned short	len;
+	short				i;
+	char				*temp;
+	char				**arr;
+	unsigned short		len;
 
 	i = -1;
 	len = 0;
@@ -58,9 +58,9 @@ void	ft_make_arr(char *buf, int q)
 	ft_validate(arr, q);
 }
 
-void	ft_validate(char **arr, int q)
+void	ft_validate(char **arr, short q)
 {
-	unsigned short i[4];
+	short i[4];
 
 	i[0] = -1;
 	while (++i[0] < q)
@@ -84,12 +84,12 @@ void	ft_validate(char **arr, int q)
 	ft_validate_more(arr, q);
 }
 
-void	ft_validate_more(char **arr, int q)
+void	ft_validate_more(char **arr, short q)
 {
-	int i;
-	int j;
-	int temp;
-	int result;
+	short i;
+	short j;
+	short temp;
+	short result;
 
 	i = -1;
 	while (++i < q)
@@ -109,9 +109,9 @@ void	ft_validate_more(char **arr, int q)
 	ft_fill_struct(arr, q);
 }
 
-int	ft_check_connection(char *str, int j)
+short	ft_check_connection(char *str, short j)
 {
-	int connect;
+	short connect;
 
 	connect = 0;
 	if (((j + 1) <= 20) && str[j + 1] == '#')

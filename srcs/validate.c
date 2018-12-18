@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 19:32:37 by lsandor-          #+#    #+#             */
-/*   Updated: 2018/12/17 16:57:36 by lsandor-         ###   ########.fr       */
+/*   Updated: 2018/12/17 18:31:52 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ int		ft_read_file(char *file)
 		ft_error();
 	len = 0;
 	len = read(fd, buf, MAX_BUFF);
-	if (len == 547)
+	if (len == 547 || len < 20)
 		ft_error();
 	buf[len] = '\0';
 	quantity = (len + 1) / 21;
+	if (quantity * 21 < len + 1)
+		ft_error();
 	ft_make_arr(buf, quantity);
 	return (1);
 }
